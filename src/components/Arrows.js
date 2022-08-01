@@ -30,25 +30,33 @@ const Arrows = () => {
             if (elem === '2') arrow = down_arrow
             if (elem === '3') arrow = left_arrow
 
-            newArrow.push(<div className="arrows_arrow animate__zoomIn">
+            newArrow.push(<div key={i} className="arrows_arrow animate__zoomIn">
                     <img src={arrow} alt="arrow"/>
                     </div>)
 
         })
 
-        function showArrow () {
+        function showArrow (index) {
             
             const promise = new Promise((resolve, reject) => {
-                setArrows([])
                 setTimeout(() => {
-                    setArrows(newArrow)
+                    if (index === 9) reject(false)
+
+                    setArrows((prev) => {
+                        return [...prev, newArrow.at(index)]
+                    })
                     resolve(true)
-                }, 100)
+                }, 500)
+            })
+
+            promise.then(() => {
+                showArrow(index + 1)
             })
 
         }
 
-        showArrow()
+        setArrows([])
+        showArrow(0)
 
     }
 
