@@ -1,15 +1,22 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import car from "../resources/img/car.png"
 import finger_up from "../resources/img/finger_up.png"
 import finger_down from "../resources/img/finger_down.png"
 import StyleGameArea from "../style/StyleGameArea"
 
-import {routeUpdate, setSelectedCell, gamesUpdate, winCellUbdate, startСellUpdate} from "../store/sliceGame"
+import {routeUpdate, 
+        setSelectedCell, 
+        gamesUpdate, 
+        winCellUbdate, 
+        startСellUpdate,
+        startUpdate,
+        winResultUpdate,
+        failResultUpdate} from "../store/sliceGame"
 
 const GameArea = () => {
 
-    const {games, startСell, winCell, selectedCell} = useSelector(state => state.maze)
+    const {games, startСell, winCell, selectedCell, start, winResult, failResult} = useSelector(state => state.maze)
     const dispatch = useDispatch()
     let cell = null;
 
@@ -78,7 +85,6 @@ const GameArea = () => {
             return item
         })
 
-        console.log('newRows', newRows)
         return newRows
 
     }
@@ -125,8 +131,13 @@ const GameArea = () => {
     }
 
     const onClickCell = (indexCell) => {
-        if (selectedCell !== null) return
+        if (selectedCell !== null || !start) return
         dispatch(setSelectedCell(indexCell))
+        if (indexCell === winCell) {
+            dispatch(winResultUpdate(winResult + 1))
+        } else {
+            dispatch(failResultUpdate(failResult + 1))
+        }
     }
 
     const onClickNext = () => {
@@ -135,6 +146,7 @@ const GameArea = () => {
         dispatch(winCellUbdate(null))
         dispatch(setSelectedCell(null))
         dispatch(gamesUpdate(games + 1))
+        dispatch(startUpdate(false))
     }
 
     let newRows = []

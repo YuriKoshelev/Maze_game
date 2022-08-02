@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import StyleArrows from "../style/StyleArrows"
 
 import up_arrow from "../resources/img/up-arrow.png"
@@ -7,11 +7,12 @@ import down_arrow from "../resources/img/down-arrow.png"
 import right_arrow from "../resources/img/right-arrow.png"
 import left_arrow from "../resources/img/left-arrow.png"
 
+import {startUpdate} from '../store/sliceGame' 
 
 const Arrows = () => {
 
     const [arrows, setArrows] = useState([])
-
+    const dispatch = useDispatch()
     const {route} = useSelector(state => state.maze)
 
     useEffect(() => {
@@ -40,8 +41,7 @@ const Arrows = () => {
             
             const promise = new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (index === 9) reject(false)
-
+                    if (index === 10) reject(false)
                     setArrows((prev) => {
                         return [...prev, newArrow.at(index)]
                     })
@@ -51,6 +51,8 @@ const Arrows = () => {
 
             promise.then(() => {
                 showArrow(index + 1)
+            }).catch(() => {
+                dispatch(startUpdate(true))
             })
 
         }

@@ -20,10 +20,13 @@ const StyleArrows = styled.section`
         align-items:center;
         background-color:#3460fc;
         border-radius: 10px;
+        color: transparent;
+        text-shadow: 0 0 0;
         img {
             display: block;
             margin: 0 auto;
             width: 60%;
+            user-select: none;
         }
     }
 }

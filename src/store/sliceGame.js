@@ -6,6 +6,9 @@ const initialState = {
     winCell: null,
     selectedCell: null,
     games: 1,
+    start: false,
+    winResult: 0,
+    failResult: 0
 }
 
 const mazeSlice = createSlice({
@@ -18,6 +21,9 @@ const mazeSlice = createSlice({
         startСellUpdate: (state, action) => {
             state.startСell = action.payload
         },
+        startUpdate: (state, action) => {
+            state.start = action.payload
+        },
         gamesUpdate: (state, action) => {
             state.games = action.payload
         },
@@ -26,6 +32,12 @@ const mazeSlice = createSlice({
         },
         setSelectedCell: (state, action) => {
             state.selectedCell = action.payload
+        },
+        winResultUpdate: (state, action) => {
+            state.winResult = action.payload
+        },
+        failResultUpdate: (state, action) => {
+            state.failResult = action.payload
         },
     }
 });
@@ -39,5 +51,8 @@ export const {
     gamesUpdate,
     startСellUpdate,
     winCellUbdate,
-    setSelectedCell
+    setSelectedCell,
+    startUpdate,
+    winResultUpdate,
+    failResultUpdate
 } = actions;

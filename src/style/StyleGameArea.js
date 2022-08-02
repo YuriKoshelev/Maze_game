@@ -74,16 +74,18 @@ const StyleGameArea = styled.section`
     display: block;
     margin: 0 auto;
     height: 40%;
-    color: transparent;
-    text-shadow: 0 0 0;
 }
 
 .finger {
     display: block;
     margin: 0 auto;
     height: 90%;
+}
+
+.finger, .car, .cell {
     color: transparent;
     text-shadow: 0 0 0;
+    user-select: none;
 }
 
 .faded{

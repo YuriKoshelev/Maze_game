@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import bg from "../resources/img/background.webp"
-
+import './normalize.css'
 const StyledMain = styled.section`
 
 .main {
@@ -27,15 +27,26 @@ const StyledMain = styled.section`
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 1111px) {
     .container {
         height: 100vh;
         width: 100vw;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        height: 100vh;
+        width: 100vw;
+        margin: 0 auto; 
+        .label img {
+            transform: translateX(125%);
+        }
         .game_area {
             height: 50vh;
             width: 90%;
-            transform: none;
+            transform: translateX(-2px);
             .cells_groups {
                 height: 95%;
                 .cells_group {
@@ -51,6 +62,7 @@ const StyledMain = styled.section`
             }
             .btn {
                 transform: none;
+                margin-top: 1px;
             }
         }
         .arrows {
