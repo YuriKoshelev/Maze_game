@@ -1,6 +1,6 @@
 import React from "react"
 import {useSelector} from "react-redux"
-import logo from "../resources/img/label.png"
+import logo from "../resources/img/label.webp"
 import StyleHeader from "../style/StyleHeader"
 
 

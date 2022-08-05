@@ -1,8 +1,8 @@
 import React, {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import car from "../resources/img/car.png"
-import finger_up from "../resources/img/finger_up.png"
-import finger_down from "../resources/img/finger_down.png"
+import car from "../resources/img/car.webp"
+import finger_up from "../resources/img/finger_up.webp"
+import finger_down from "../resources/img/finger_down.webp"
 import StyleGameArea from "../style/StyleGameArea"
 
 import {routeUpdate, 
