@@ -36,7 +36,7 @@ const StyledHeader = styled.section`
             display: block;
             margin: 0 auto;
             height: 2rem;
-            transform: translateX(100%);
+            transform: translateX(-40%);
         }
     }
     .statistics {
@@ -46,6 +46,22 @@ const StyledHeader = styled.section`
         font-size: 13px;
         color: rgb(179, 125, 9);
         font-weight: 600;
+    }
+    .level_group {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: flex-start;
+        transform: translateX(14vw);
+        width: 100px; 
+        .level {
+            color: darkgreen;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .timer {
+            color: red;
+        }
     }
 }
 

@@ -26,6 +26,7 @@ const StyleArrows = styled.section`
             display: block;
             margin: 0 auto;
             width: 60%;
+            max-height: 95%;
             user-select: none;
         }
     }

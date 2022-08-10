@@ -39,9 +39,21 @@ const StyledMain = styled.section`
     .container {
         height: 100vh;
         width: 100vw;
-        margin: 0 auto; 
+        margin: 0 auto;
         .label img {
-            transform: translateX(125%);
+            transform: translateX(-30%);
+        } 
+        .statistics {
+            transform: translateX(-20%);
+        } 
+        .level_group {
+            transform: translateX(20%);
+            .level {
+                font-size: 17px;
+            }
+            .timer {
+                font-size: 12px;
+            }
         }
         .game_area {
             height: 50vh;
@@ -63,6 +75,12 @@ const StyledMain = styled.section`
             .btn {
                 transform: none;
                 margin-top: 1px;
+            }
+            .win {
+                transform: translateX(0);
+            }
+            .winbtn {
+                margin-top: 20px;
             }
         }
         .arrows {

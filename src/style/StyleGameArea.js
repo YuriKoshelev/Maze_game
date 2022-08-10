@@ -23,7 +23,7 @@ const StyleGameArea = styled.section`
         margin: 0 auto;
         margin-top: 5px;
         height: 30px;
-        width: 130px;
+        width: 140px;
         border-style: none;
         border-radius: 45px;
         background-color: rgb(213, 156, 33);
@@ -36,6 +36,24 @@ const StyleGameArea = styled.section`
         :hover {
             background-color:rgb(229, 168, 37) ;
         }
+    }
+    .cupgroup {
+        transform: translateX(4%);
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 70%;
+        }
+        .wintext {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 20px;
+            color: darkgreen;
+        }
+    }
+    .winbtn {
+        margin-top: 20px;
     }
 }
  

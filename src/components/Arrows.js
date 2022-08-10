@@ -13,7 +13,7 @@ const Arrows = () => {
 
     const [arrows, setArrows] = useState([])
     const dispatch = useDispatch()
-    const {route} = useSelector(state => state.maze)
+    const {route, winResult} = useSelector(state => state.maze)
 
     useEffect(() => {
 
@@ -61,6 +61,8 @@ const Arrows = () => {
         showArrow(0)
 
     }
+
+    if (winResult === 15) return (null)
 
     return (
         <StyleArrows>

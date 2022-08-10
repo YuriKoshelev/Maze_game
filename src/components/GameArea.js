@@ -1,6 +1,7 @@
 import React, {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import car from "../resources/img/car.webp"
+import cup from "../resources/img/win.webp"
 import finger_up from "../resources/img/finger_up.webp"
 import finger_down from "../resources/img/finger_down.webp"
 import StyleGameArea from "../style/StyleGameArea"
@@ -132,7 +133,9 @@ const GameArea = () => {
 
     const onClickCell = (indexCell) => {
         if (selectedCell !== null || !start) return
+
         dispatch(setSelectedCell(indexCell))
+        
         if (indexCell === winCell) {
             dispatch(winResultUpdate(winResult + 1))
         } else {
@@ -141,18 +144,37 @@ const GameArea = () => {
     }
 
     const onClickNext = () => {
+        if (winResult === 15) {
+            window.location.reload()
+            return
+        }
         dispatch(routeUpdate([]))
         dispatch(startСellUpdate(null))
         dispatch(winCellUbdate(null))
         dispatch(setSelectedCell(null))
-        dispatch(gamesUpdate(games + 1))
         dispatch(startUpdate(false))
+        dispatch(gamesUpdate(games + 1))
     }
 
     let newRows = []
     if (startСell !== null || selectedCell !== null) {
         newRows = buildRows()
     }
+
+    if (winResult === 15) {
+        return (
+            <StyleGameArea>
+                <div className="game_area">
+                    <div className="cupgroup faded">
+                        <img src={cup} alt="cup" />
+                        <div className="wintext">Поздравляем! Ты молодец!</div>
+                    </div>
+                    <button className="btn winbtn faded"
+                                        onClick={() => {onClickNext()}}
+                >Начать заново</button> 
+                </div>     
+            </StyleGameArea>)
+    }  
 
     return (
         <StyleGameArea>
@@ -170,7 +192,7 @@ const GameArea = () => {
                 </div>
                 {selectedCell !== null ? <button className="btn faded"
                                         onClick={() => {onClickNext()}}
-                >Далее</button> 
+                >{winCell === selectedCell ? 'Далее' : 'Повторить'}</button> 
                 : null}
             </div>
         </StyleGameArea>
