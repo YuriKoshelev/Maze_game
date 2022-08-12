@@ -46,6 +46,12 @@ const StyledHeader = styled.section`
         font-size: 13px;
         color: rgb(179, 125, 9);
         font-weight: 600;
+        .question {
+            display: block;
+            margin: 0 auto;
+            width: 4vh;
+            cursor: pointer;
+        }
     }
     .level_group {
         display: flex;

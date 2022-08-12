@@ -1,25 +1,26 @@
 import React, {useRef, useEffect, useState} from "react"
 import {useSelector, useDispatch} from "react-redux"
-import logo from "../resources/img/label.webp"
 import StyleHeader from "../style/StyleHeader"
+import logo from "../resources/img/label.webp"
+import question from "../resources/img/question.webp"
 
-import {setSelectedCell, failResultUpdate} from "../store/sliceGame"
+import {setSelectedCell, failResultUpdate, rulseUpdate} from "../store/sliceGame"
 
 const Header = () => {
 
     const [idTimer, setIdTimer] = useState(null)
     const refTimer = useRef(null)
-    const {winResult, failResult, selectedCell, games, winCell} = useSelector(state => state.maze)
+    const {winResult, failResult, selectedCell, games, winCell, ruls} = useSelector(state => state.maze)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (selectedCell === null) {
+        if (selectedCell === null && !ruls) {
             setTimer()
         } else {
             refTimer.current.innerText = ''
             clearInterval(idTimer)
         }
-    }, [selectedCell])
+    }, [selectedCell, ruls])
 
     const setTimer = () => {
         let sec = 43 
@@ -45,6 +46,13 @@ const Header = () => {
             }      
         }, 1000)
         setIdTimer(id)
+    }
+
+    const onClickQuestion = () => {
+        if (games - failResult < 8) {
+            clearInterval(idTimer)
+            dispatch(rulseUpdate(true))
+        }
     }
 
     let level = 0
@@ -76,6 +84,10 @@ const Header = () => {
                 </div>
                 <div className="statistics">
                     <div>
+                        <img className="question" 
+                             src={question} 
+                             alt="question" 
+                             onClick={onClickQuestion}/>
                         Выиграл: {winResult}
                         <br/>
                         Проиграл: {failResult}

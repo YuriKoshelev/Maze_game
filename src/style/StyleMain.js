@@ -5,6 +5,7 @@ const StyledMain = styled.section`
 
 .main {
     background: url(${bg});
+    position: relative;
 }
 
 .container {
@@ -35,7 +36,17 @@ const StyledMain = styled.section`
     }
 }
 
+@media (max-width: 770px) {
+    .rulse {
+        width: 90vw;
+    }
+}
+
 @media (max-width: 600px) {
+    .rulse {
+        font-size: 13px;
+        width: 90vw;
+    }
     .container {
         height: 100vh;
         width: 100vw;
