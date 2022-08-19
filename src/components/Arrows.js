@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import StyleArrows from "../style/StyleArrows"
 
-import up_arrow from "../resources/img/up-arrow.png"
-import down_arrow from "../resources/img/down-arrow.png"
-import right_arrow from "../resources/img/right-arrow.png"
-import left_arrow from "../resources/img/left-arrow.png"
+import up_arrow from "../resources/img/up-arrow.webp"
+import down_arrow from "../resources/img/down-arrow.webp"
+import right_arrow from "../resources/img/right-arrow.webp"
+import left_arrow from "../resources/img/left-arrow.webp"
 
 import {startUpdate} from '../store/sliceGame' 
 
